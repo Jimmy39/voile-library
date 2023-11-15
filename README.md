@@ -68,6 +68,14 @@ led.Operation->Func1(&led, i, j);
 | --- | --- | --- | --- |
 |```struct voile_ioPin_t```|(developing)[voile-class-iopin](https://github.com/Jimmy39/voile-device-iopin)|(developing)[voile-gpio-rp2040](https://github.com/Jimmy39/voile-gpio-rp2040)|For any single io in rp2040|
 
+## Todo
+
+uart for rp2040
+
+74595
+
+gpio for ch552
+
 ## Other
 
 The name 'voile library' is inspired by the _voile magic library_ in [Touhou Koumakyou (Scarlet Devil Land) ~ the Embodiment of Scarlet Devil](https://en.touhouwiki.net/wiki/Embodiment_of_Scarlet_Devil)
