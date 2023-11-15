@@ -62,13 +62,12 @@ Then we can include _devicelist.h_ and operate device like this:
 led.Operation->Func1(&led, i, j);
 ```
 
-
-The name 'voile library' is inspired by the voile magic library in [Touhou Koumakyou (Scarlet Devil Land) ~ the Embodiment of Scarlet Devil](https://en.touhouwiki.net/wiki/Embodiment_of_Scarlet_Devil)
-
-
 ## Library list
 
 |Class|Class Library|Hardware operation library|Description|
 | --- | --- | --- | --- |
 |```struct voile_ioPin_t```|(developing)[voile-class-iopin](https://github.com/Jimmy39/voile-device-iopin)|(developing)[voile-gpio-rp2040](https://github.com/Jimmy39/voile-gpio-rp2040)|For any single io in rp2040|
 
+## Other
+
+The name 'voile library' is inspired by the _voile magic library_ in [Touhou Koumakyou (Scarlet Devil Land) ~ the Embodiment of Scarlet Devil](https://en.touhouwiki.net/wiki/Embodiment_of_Scarlet_Devil)
