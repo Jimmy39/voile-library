@@ -59,7 +59,7 @@ extern struct voile_ioPin_t led;
 Then we can include _devicelist.h_ and operate device like this:
 
 ```C
-LED.Operation->Func1(&MyDevice, i, j);
+led.Operation->Func1(&led, i, j);
 ```
 
 
