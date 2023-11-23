@@ -19,7 +19,6 @@
 #define bool _Bool
 
 /**
- * @enum voileFunctionReturn
  * @brief Return value meaning
  * 
  */
