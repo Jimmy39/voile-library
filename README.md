@@ -9,35 +9,56 @@ To save memory, voile library uses const struct. Two struct are used to implemen
 __public struct__ includes public members of the class, usually interface functions. For example: 
 ```C
 /**
- * @brief Single io
+ * @brief Operations of uart
  * 
  */
 typedef const struct{
-    int (*Func1)(...);
-    int (*Func2)(...);
-    int (*Func3)(...);
-} voile_const_ioPin_t;
+    voile_status_t (*Init)(void *, uint32_t);
+    voile_status_t (*Transmit)(void *, uint8_t);
+    voile_status_t (*Receive)(void *, uint8_t *);
+} voile_const_uartOperate_t;
+
+/**
+ * @brief Get something from uart
+ * 
+ */
+typedef const struct{
+    uint8_t (*Receive)(void *);
+} voile_const_uartGet_t;
+
+/**
+ * @brief Class for UART
+ * 
+ */
+typedef const struct{
+    voile_const_uartOperate_t *Operate; ///< Operate the uart
+    voile_const_uartGet_t *Get;         ///< Get date or status from uart
+} voile_const_uart_t;
 ```
 
 __internal struct__ includes all members of class, as well as some constants used to define hardware or constant pointers to cache areas, except for the public part. For example: 
 ```C
+
 /**
- * @brief Single io for gpio in rp2040
+ * @brief Class for hardware UART in rp2040
  * 
  */
 typedef const struct{
-    int (*Func1)(...);
-    int (*Func2)(...);
-    int (*Func3)(...);
-    uint8_t pin;                            ///< Pin number
-} voile_internal_const_ioPin_gpioRp2040_t;
+    voile_const_uartOperate_t *Operate; ///< Operate the uart
+    voile_const_uartGet_t *Get;         ///< Get date or status from uart
+    uint8_t uartId;                     ///< UART0 or UART1
+    uint8_t txdPin;
+    uint8_t rxdPin;
+} voile_const_internal_uart_rp2040_t;
 ```
 
 We define devices use internal struct at _devicelist.c_. For example:
 ```C
-voile_internal_const_ioPin_gpioRp2040_t led = {
-    VOILE_IOPIN_GPIORP2040_FUNCINIT,    // A micro to init all function pointer
-    .pin = 25
+voile_const_internal_uart_rp2040_t myuart = {
+    VOILE_UART_RP2040_FUNCINIT,    // A micro to init all function pointer
+    .uartId = 0,
+    .txdPin = 0,
+    .rxdPin = 1
 };
 ```
 
@@ -45,13 +66,13 @@ __Notice:__ The specific internal struct definition format can be found in the r
 
 And declare it as public struct at _devicelist.h_:
 ```C
-extern voile_const_ioPin_t led;
+extern voile_const_uart_t myuart;
 ```
 
 Then we can include _devicelist.h_ and operate device like this:
 
 ```C
-led.Func1(&MyDevice, i, j);
+myuart.Operate->Transmit(&myuart, 'H');
 ```
 
 Different internal struct may have the same public interface, which can be treated as the same class, and the public struct can be shared. At this time, we take out public struct and put it in a separate header file. To indicate that this library does not contain specific implementations, it is named with interface.
