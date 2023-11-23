@@ -23,12 +23,12 @@
  * @brief Return value meaning
  * 
  */
-enum voileFunctionReturn{
+typedef enum{
     success = 0,
-    nomalError = -1,
-    inputRangeError = -2,
-    hardwareUnsupportedError = -3,
-};
+    failure = 1,
+    inputRangeError = 2,
+    hardwareUnsupportedError = 3,
+} voile_status_t;
 
 
 #endif // !__VOILE_COMMON_H_
