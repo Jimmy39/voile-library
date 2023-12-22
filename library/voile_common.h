@@ -2,12 +2,6 @@
  * @file voile_common.h
  * @author Jimmy Wang (wanghanyu2000@126.com)
  * @brief Common denpence for voile library
- * @version 0.0.0
- * @date 2023-10-25
- * @par History
- * Version|Auther|Date|Describe
- * ------|----|------|--------
- * 0.0.0|JimmyWang|2023-10-25|First update.
  * 
  */
 #ifndef __VOILE_COMMON_H_
@@ -15,6 +9,7 @@
 
 
 #include <stdint.h>
+#include <stddef.h>
 
 #define bool _Bool
 
