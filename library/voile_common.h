@@ -23,8 +23,7 @@ typedef enum {
     hardwareUnsupportedError = 3,
 } voile_status_t;
 
-static inline voile_status_t voile_ReturnHardwareUnsupportedError(const void*, ...)
-{
+static inline voile_status_t voile_ReturnHardwareUnsupportedError(const void*, ...) {
     return hardwareUnsupportedError;
 }
 
