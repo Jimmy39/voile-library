@@ -74,15 +74,17 @@ typedef const struct{
 
 We define devices use internal struct at _devicelist.c_. For example:
 ```C
+#define __DEVICELIST_C__
+
 #include "voile_uart_rp2040.h"
 voile_const_internal_uart_rp2040_t myuart = {
     
     // A micro to init all function pointer
-    FUNCINIT,
+    AUTOFUNCINIT,
 
     .uartId = UART0,
 
-    //And others
+    // And other setting
     // ...
 
 };
@@ -111,20 +113,21 @@ Different internal struct may have the same public interface, which can be treat
 
 ## Library list
 
-HAL for RP2040:
 | Public struct(Library name) | Internal struct(Library name) | Description |
 | --- | --- | --- |
-| (alpha)```voile_const_ioPin_t```([voile-interface-iopin](https://github.com/Jimmy39/voile-interface-iopin)) | (alpha)```voile_const_internal_ioPin_gpioRp2040_t```([voile-iopin-rp2040](https://github.com/Jimmy39/voile-iopin-rp2040)) | For any single io in rp2040 |
-| (alpha)```voile_const_uart_t```([voile-interface-uart](https://github.com/Jimmy39/voile-interface-uart)) | (alpha)```voile_const_internal_uart_rp2040_t```([voile-uart-rp2040](https://github.com/Jimmy39/voile-uart-rp2040)) | For hardware uart in rp2040 |
-| (alpha)```voile_const_74595_t```([voile-74595](https://github.com/Jimmy39/voile-74595)) | (alpha)```voile_const_internal_74595_t```([voile-74595](https://github.com/Jimmy39/voile-74595)) | For 74595 control |
+| (Alpha)```voile_const_ioPin_t```([voile-interface-iopin](https://github.com/Jimmy39/voile-interface-iopin)) | (Alpha)```voile_const_internal_ioPin_gpioRp2040_t```([voile-iopin-rp2040](https://github.com/Jimmy39/voile-iopin-rp2040)) | For any single io in rp2040 |
+||(Alpha)```voile_const_internal_ioPin_74595_withoutQH```([voile-iopin-74595-withoutqh](https://github.com/Jimmy39/voile-iopin-74595-withoutqh)) | Operate 74595 as same as gpio in voile library |
+| (Alpha)```voile_const_uart_t```([voile-interface-uart](https://github.com/Jimmy39/voile-interface-uart)) | (Alpha)```voile_const_internal_uart_rp2040_t```([voile-uart-rp2040](https://github.com/Jimmy39/voile-uart-rp2040)) | For hardware uart in rp2040 |
+| (Alpha)```voile_const_74595_t```([voile-74595](https://github.com/Jimmy39/voile-74595)) | (Alpha)```voile_const_internal_74595_t```([voile-74595](https://github.com/Jimmy39/voile-74595)) | For 74595 control |
 
 
 ## Todo list
 
 | Library name | Public struct/Internal struct | Description |
-| voile-iopin-74595 | ```voile_const_ioPin_t```([voile-interface-iopin](https://github.com/Jimmy39/voile-interface-iopin)) / ```voile_const_internal_ioPin_74595_t``` | Operate a 74595 pin as io |
-|voile-potentiometer-3wire | ```voile_const_potentiometer_t```/```voile_const_internal_potentiometer_3wire_t``` | Opearte 3 wire potentiometer |
-| voile-gpio-ch552 | ```voile_ioPin_t```([voile-interface-iopin](https://github.com/Jimmy39/voile-interface-iopin)) / ```voile_internal_ioPin_gpioCh552_t``` | For any single io in rp2040 |
+| --- | --- | --- |
+|voile-potentiometer-3wire | ```voile_const_potentiometer_t```([voile-interface-potentiometer](https://github.com/Jimmy39/voile-interface-potentiometer))/```voile_const_internal_potentiometer_3wire_t```([voile-potentiometer-3wire](https://github.com/Jimmy39/voile-potentiometer-3wire)) | Control potentiometer by U/_D, INC, CS in voile library |
+| voile-gpio-ch552 | ```voile_ioPin_t```([voile-interface-iopin](https://github.com/Jimmy39/voile-interface-iopin)) / ```voile_internal_ioPin_gpioCh552_t``` | For any single io in ch552 |
+| voile-gpio-esp32 | ```voile_ioPin_t```([voile-interface-iopin](https://github.com/Jimmy39/voile-interface-iopin)) / ```voile_internal_ioPin_gpioEsp32_t``` | For any single io in esp32 |
 
 ## Other
 
